@@ -1,0 +1,313 @@
+
+
+:root{
+    --primaryColor:#6d28d9;
+    --secondaryColor:#ede9fe;
+    --mainWhite:#fff;
+    --mainBlack:#222;
+    --mainGrey:#7c7c7c;
+    --mainSpacing:#0.1rem;
+    --mainTransition:all 0.3s linear;
+    --mainRed:#db2777;
+    --bodyColor:#f6f6f6;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    }
+    body{
+        background-color: var(--bodyColor);
+       /* position: relative; */
+       color: var(--mainBlack);
+      
+       
+       
+    }
+    @media only screen and (max-width: 600px) {
+  .nav-items{
+    display: none;
+}
+
+
+}
+@media only screen and (min-width: 600px) {
+
+    .nav-items{
+        display: none;
+    }
+   
+
+
+    }
+    @media only screen and (min-width: 768px) {
+
+         .nav-items{
+             display: flex;
+             justify-content: space-around;
+             width: 80%;
+         }
+         .menue{
+             /* width: 750px; */
+            
+            color: var(--mainBlack);
+            font-weight: bold;
+            text-align: right;
+            display: flex;
+          
+  
+         }
+         
+        .menue li{
+            justify-content: space-between;
+        /* float: left; */
+        width: 230px;
+        padding: .5rem;
+      
+        cursor: pointer;
+        transition: all .5s;
+        position: relative;
+        text-align: center;
+
+            
+         }
+         .menue li:hover{
+           color: var(--primaryColor);
+             
+         }
+         .inside-ul{
+             display: none;
+             position: absolute;
+             right: 0px;
+             margin: 5px;
+           
+         }
+         .menue li:hover >ul {
+             display: block;
+            /* border-bottom: solid 5px black */
+            
+         }
+         .search{
+             border: none;
+             border-radius:  5px;
+             text-align: right;
+             padding-right: 1rem;
+             font-weight: bold;
+             color: var(--primaryColor);
+             background-color: var(--mainWhite);
+         }
+        
+        
+     
+         }
+         /* end of mediaquery */
+
+    .hambergerMenue{
+        color: var(--primaryColor);
+
+    }
+    .cart-icon{
+        color: var(--primaryColor);
+        position: relative;
+    }
+    .navbar-Center{
+        display: flex;
+        justify-content: space-around;
+        max-width: 1170px;
+    }
+    .navbar{
+        padding-top: 1rem;
+        width: 100%;
+        height: 60px;
+       align-items: center;
+        background-color: var(--secondaryColor);
+
+    }
+    .cart-icon i ,.hambergerMenue i{
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    .number{
+        background-color: var(--mainRed);
+        border-radius: 100%;
+        width: 20px;
+        height: 20px;
+        color: var(--mainWhite);
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        right: -8px;
+        top: -8px;
+        align-items: center;
+
+    }
+    /* end of navbar*/
+   
+    .single-product{
+      
+        /* background-color: var(--mainWhite); */
+        /* background-color: royalblue; */
+        display: grid;
+        grid-template-columns:repeat(auto-fit  ,minmax(300px,1fr))
+    
+   
+
+    }
+    /* ghab tasvir /description va price */
+    .DBproduct{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--mainWhite);
+        border-radius: 5px;
+        margin: 2rem ;}
+    .product-des{
+        background:var(--secondaryColor);
+        width: 150px;
+        height: 50px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-around;
+        margin: 2rem;
+        padding: 1rem;
+    }
+    .cart-btn{
+        width: 100px;
+        height: 50px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+       
+        margin: 0 0 1rem 0;
+        padding: .5rem;
+        background-color: var(--primaryColor);
+    }
+    .cart-btn:hover{
+        box-shadow: 5px 5px 10px  blue;
+    }
+    .image-container{width: 250px;
+    height: 150px;}
+  
+    .section-title{
+        display: flex;
+        padding: 1rem;
+        justify-content: center;
+       
+    }
+   
+
+
+footer{
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+}
+.modal{
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    top: 2.5rem;
+    right: 1rem;
+   
+    width: 30rem; /* Full width */
+ 
+    padding-top: 0px; /* Location of the box */
+  border-radius: 5px;
+  
+    
+    background-color:var(--mainWhite)
+  
+
+}
+.modal-title{
+    align-items: center;
+    color: var(--primaryColor);
+    padding: 1rem 100px 1rem 100px;
+
+}
+.modalFooter{
+    display: flex;
+    justify-content: space-around;
+    color: var(--primaryColor);
+}
+.backdrop{
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0,0,0,.3) ;
+    
+    display: none;
+    z-index: 500;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+.newElement{
+   align-items: center;
+   display: flex;
+   justify-content: center;
+   color: red;
+}
+/* style for content in modal */
+.divTag{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 1rem;
+    background-color:var(--secondaryColor);
+}
+.description{
+    display: flex;
+    flex-direction: column;
+}
+.NumberOfProd{
+    display: flex;
+    flex-direction: column;
+}
+.fa-trash-can{
+    color: red;
+}
+.fa-arrow-down{
+    color: var(--mainRed);
+}
+.fa-arrow-up{
+    color: var(--primaryColor);
+}
+.bought{
+    margin: 0 0 1rem 0;
+    
+}
+.divFooter{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+.modalbtn{
+    border: none;
+    width: 3rem;
+    height: 2rem;
+    font-size:bold;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+.closebtn{
+    border: 1px solid var(--mainRed);
+}
+.conformbtn{
+    border: 1px solid var(--primaryColor);
+}
+.disabled{
+    color: var(--mainBlack);
+    background-color: var(--mainGrey);
+    
+    
+}
+.disabled:hover{
+    box-shadow: none;
+    cursor: unset;
+}
+

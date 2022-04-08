@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <title>online shop</title>
+    <link href="./style.css" rel="stylesheet"/ >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+   
+    <body>
+<nav class="navbar">
+    <div class="navbar-Center">
+      <span class="hambergerMenue">
+        <i class="fas fa-bars"></i>
+      </span>
+     <div class="nav-items" >
+     <!-- //ul and input -->
+        <ul class="menue" >
+          <li> تماس با ما </li>
+         
+           <li> دسته بندی محصولات
+             <ul class="inside-ul">
+               <li>لپ تاپ</li>
+               <li> لوازم جانبی کامپیوتر</li>
+               <li>موبایل </li>
+             </ul>
+           </li>
+           <li> خانه</li>
+           
+         </ul>
+      
+       <input class="search" placeholder="جستجو"/>
+
+     </div>
+     
+      <span class="cart-icon">
+        <i class="fa fa-cart-plus"></i>
+        <span class="number">0</span>
+        </span>
+    </div>
+</nav>
+<section>
+  <!-- content ezafi -->
+  <div class="content"> 
+    <!-- div b h2 ezafe beshe  -->
+    <h2 class="section-title">لیست محصولات</h2>
+   
+    <div class="single-product ">
+    
+     
+    </div>
+  
+  </div>
+  <footer><p>ارتباط با ما </p>
+  <p>
+کلیه حقوق سایت محفوظ است 
+  </p>
+</footer>
+
+</section>
+<!-- show modal -->
+
+<div class="modal">
+  <div class="modal-title"><h3>سبد خرید شما</h3></div>
+  <!-- content -->
+ <div class="modal-content">محصولات خریداری شده</div>
+
+ <!-- footer -->
+ <div class="modalFooter"> 
+   <span class="totla-price">مجموع قیمت :</span>
+   <span><i class="fa-solid fa-xmark"></i></span>
+   <span><i class="fa-solid fa-circle-check"></i></span>
+   
+   </div>
+</div>
+
+<div class="backdrop"></div>
+<script type="module" src="./index.js"></script>
+    </body>
+</html>
