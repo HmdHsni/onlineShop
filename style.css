@@ -233,6 +233,7 @@ footer{
     justify-content: space-around;
     color: var(--primaryColor);
 }
+
 .backdrop{
     width: 100%;
     height: 100%;
@@ -244,40 +245,54 @@ footer{
     left: 0;
     position: fixed;
 }
-.newElement{
-   align-items: center;
-   display: flex;
-   justify-content: center;
-   color: red;
-}
+
 /* style for content in modal */
-.divTag{
+.cart-item{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin: 1rem;
     background-color:var(--secondaryColor);
 }
-.description{
-    display: flex;
-    flex-direction: column;
+.cart-item-img{
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
 }
-.NumberOfProd{
+.cart-itemDes{
     display: flex;
     flex-direction: column;
+    margin-top: 2rem;
+  
+}
+.title{
+    padding: .5rem;
+}
+.price{
+   padding: .5rem ;
+}
+.cart-itemController{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    
 }
 .fa-trash-can{
     color: red;
+    margin-top: 3rem;
+    cursor: pointer;
 }
 .fa-arrow-down{
     color: var(--mainRed);
+    cursor: pointer;
 }
 .fa-arrow-up{
     color: var(--primaryColor);
+    cursor: pointer;
 }
-.bought{
-    margin: 0 0 1rem 0;
-    
+.NumberOfProd{
+    font-weight: bold;
+    color: var(--mainBlack);
 }
 .divFooter{
     display: flex;

@@ -2,13 +2,14 @@ const cartIcon=document.querySelector(".cart-icon")
 const modal=document.querySelector(".modal")
 const backdrop=document.querySelector(".backdrop");
 const number=document.querySelector(".number")
-const bought=document.querySelector(".bought")
+
 const modalFooter=document.querySelector(".modalFooter")
 //const closebtn=document.querySelector(".closebtn")
 const cartTotal=document.querySelector(".totla-price")
 const cartbtn=document.querySelector(".cart-btn")
 let cart=[];
 const singleproduct=document.querySelector(".single-product")
+const modalcontent=document.querySelector(".modal-content")
 import {productsData} from "./products.js";
 
 document.addEventListener('DOMContentLoaded',(e)=>{
@@ -82,10 +83,20 @@ class Ui{
                            const localProducts=JSON.parse(localStorage.getItem("products"))
                            console.log("local products:");
                             console.log(localProducts);
-                         Storage.getProduct(productId);
+                            Storage.getProduct(productId);
+                            //ravesh aval k javab nemide!
+                        //  const addedProduct={...Storage.getProduct(productId),quntity:1}
+                        //  cart=[...cart,addedProduct]
+                        //  console.log("addedproductttttt");
+                        //  console.log(addedProduct);
                           Storage.saveCart(cart);
                         //   const ui=new Ui();
                           this.setCartValue(cart)
+                          //show product in cart
+                         console.log("anasore araye");
+                         const CartElem=cart[cart.length-1]
+                         console.log(CartElem);
+                             this.addCartitem(CartElem)
                       
                         })
                     
@@ -102,10 +113,28 @@ class Ui{
         },0)
         number.innerText=tempCartItems;
         cartTotal.innerText=`مجموع قیمت:${Totalprice}`
-        console.log("dakhel sabad");
-        console.log(tempCartItems);
-        console.log("total");
-        console.log(Totalprice);
+   
+    }
+    //show cart in Dom 
+    addCartitem(cartItem){
+        const div=document.createElement("div")
+        div.classList.add("cart-item")
+        div.innerHTML=`
+                       <img  class="cart-item-img" src="${cartItem.imageUrl}" alt="picture"/>
+                        <div class="cart-itemDes">
+                        <h4 class="title">${cartItem.title}</h4>
+                        <h5 class="price">${cartItem.price}</h5>
+                        
+                        </div>
+                        <div class="cart-itemController">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        <p class="NumberOfProd">${cartItem.quntity}</p>
+                        <i class="fa-solid fa-arrow-down"></i>
+                        </div>
+                        <i class="fa-solid fa-trash-can"></i>
+        `
+        modalcontent.appendChild(div)
+
     }
     
 
@@ -130,7 +159,7 @@ static saveProducts(products){
      console.log("cart");
      console.log(cart);
      console.log("found");  
-    console.log(found.id);
+    console.log(found);
     
     
 }
@@ -166,54 +195,5 @@ function closeCart(e){
         modal.style.display="none";
     
 }
-// function ShowProducts(){
-//     // console.log(number.textContent)
-//     if(number.textContent==0){
-//         const htag=document.createElement("h3")
-//         htag.classList.add('newElement')
-//         htag.innerHTML="سبد خرید خالی است "
-//         modal.appendChild(htag)
-//     }
-//     else{
-//         const divTag=document.createElement("div")
-//         divTag.classList.add("divTag")
-//         const boughtProduct=`
-        
-//         <img src="" alt="tasvir"/>
 
-
-//             <div class="description">
-//             <p>نام   </p>
-//             <p>قیمت</p>
-//             </div>
-
-       
-
-//         <div class="NumberOfProd">
-//         <i class="fa-solid fa-arrow-up"></i>
-//         <p>عدد</p>
-//         <i class="fa-solid fa-arrow-down"></i>
-//         </div>
-
-//         <i class="fa-solid fa-trash-can"></i>
-        
-//         `
-
-//         divTag.innerHTML=boughtProduct
-//         bought.appendChild(divTag)
-
-//         //modal footer
-//         const divfooter=document.createElement("div")
-//         divfooter.classList.add("divFooter")
-//         const newdivfooter=`
-//                         <p>مجموع قیمت </p>
-//                         <button class=" modalbtn closebtn">بستن </button>
-//                         <button class=" modalbtn conformbtn">ادامه </button>`
-//                         divfooter.innerHTML= newdivfooter
-//                         modalFooter.appendChild(divfooter)
-
-
-
-//     }
-// }
  
