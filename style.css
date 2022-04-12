@@ -309,11 +309,20 @@ footer{
     
 }
 
-.closebtn{
-    border: 1px solid var(--mainRed);
+.Basketbtn{
+    width: 70px;
+    background-color:rgb(168, 168, 241);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: var(--mainBlack);
+    margin-bottom: 1rem;
+    cursor: pointer;
+
 }
-.conformbtn{
-    border: 1px solid var(--primaryColor);
+.Basketbtn:hover{
+    background-color: var(--primaryColor);
+   
 }
 .disabled{
     color: var(--mainBlack);
