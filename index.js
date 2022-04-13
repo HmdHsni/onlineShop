@@ -11,6 +11,7 @@ const Basketbtn=document.querySelector(".Basketbtn")
 const singleproduct=document.querySelector(".single-product")
 const modalcontent=document.querySelector(".modal-content")
 const NumberOfProd=document.querySelector(".NumberOfProd")
+
 // const dataid=document.querySelectorAll(".dataid")
 import {productsData} from "./products.js";
 
@@ -108,6 +109,79 @@ class Ui{
    
     
         }); //end of foreach
+        modalcontent.addEventListener("click",(e)=>{
+            if(e.target.classList.contains("fa-arrow-up")){
+                                 const addQuantity=e.target
+                                
+                                 //find the product in cart
+                                 console.log("cart");
+                                 console.log(cart);
+                                 const addedItem= cart.find((citem)=> {return citem.id==addQuantity.dataset.id})
+                                 console.log("addedItem");
+                                 console.log(addedItem);
+                                 addedItem.quntity++
+                                //update setcartvalu--->total and basketnumber
+                                this.setCartValue(cart);
+                                //update innertext in target
+                                addQuantity.nextElementSibling.innerText=addedItem.quntity
+                                //save cart in localstorage
+                                Storage.saveCart(cart)
+                              
+                    
+                }
+                else if(e.target.classList.contains("fa-arrow-down")){
+                 const decrementQuntity=e.target
+                 //find the product in cart
+                 const decrementItem= cart.find((citem)=>citem.id==decrementQuntity.dataset.id)
+                 if(decrementItem.quntity===1){
+                    cart=cart.filter((citem)=>{ return citem.id!==parseInt(decrementItem.id)})
+                     
+                        this.setCartValue(cart)
+                      
+                        decrementQuntity.parentElement.parentElement.remove()
+                        Storage.saveCart(cart);
+                        this.EnableButton(decrementQuntity.dataset.id)
+
+                       
+                    
+
+
+                }
+                else{
+                    decrementItem.quntity--
+                    console.log(decrementItem.quntity);
+                    
+   
+   
+                //    //update setcartvalu--->total and basketnumber
+                   this.setCartValue(cart);
+                //    //update innertext in target
+               
+                decrementQuntity.previousElementSibling.innerText=decrementItem.quntity
+                //    //save cart in localstorage
+                   Storage.saveCart(cart)
+                }
+              
+     
+                }
+                else if(e.target.classList.contains("fa-trash-can")){
+                             const removeitem=e.target
+     
+                             // remove from modal 
+                             removeitem.parentElement.remove()
+                             //remove from cart array
+                           cart=  cart.filter((r)=>{return r.id!==parseInt(e.target.dataset.id)})
+                            this.setCartValue(cart)
+                            Storage.saveCart(cart);
+                            //change buttons style
+                            this.EnableButton(e.target.dataset.id)
+                         
+                         
+                             
+     
+                }
+     
+             })
         
     }//end method
     // set total and numberof basket
@@ -142,87 +216,7 @@ class Ui{
         modalcontent.appendChild(div)
          //listener for Basketbtn
         Basketbtn.addEventListener("click",this.ClearBasket)
-        modalcontent.addEventListener("click",(e)=>{
-       if(e.target.classList.contains("fa-arrow-up")){
-                            const addQuantity=e.target
-                            console.log(addQuantity.dataset.id);
-                            //find the product in cart
-                            
-                            const addedItem= cart.find((citem)=>citem.id==addQuantity.dataset.id)
-                            addedItem.quntity++
-                           //update setcartvalu--->total and basketnumber
-                           this.setCartValue(cart);
-                           //update innertext in target
-                           addQuantity.nextElementSibling.innerText=addedItem.quntity
-                           //save cart in localstorage
-                           Storage.saveCart(cart)
-                         
-               
-           }
-           else if(e.target.classList.contains("fa-arrow-down")){
-            const decrementQuntity=e.target
-            //find the product in cart
-            const decrementItem= cart.find((citem)=>citem.id==decrementQuntity.dataset.id)
-            decrementItem.quntity--
-        //    //update setcartvalu--->total and basketnumber
-           this.setCartValue(cart);
-        //    //update innertext in target
-       
-        decrementQuntity.previousElementSibling.innerText=decrementItem.quntity
-        //    //save cart in localstorage
-           Storage.saveCart(cart)
-         
-
-           }
-           else if(e.target.classList.contains("fa-trash-can")){
-                        const removeitem=e.target
-
-                        // remove from modal 
-                        removeitem.parentElement.remove()
-                        //remove from cart array
-                      cart=  cart.filter((r)=>{return r.id!==parseInt(e.target.dataset.id)})
-                       console.log("cart");
-                       console.log(cart);
-                       this.setCartValue(cart)
-                       Storage.saveCart(cart);
-                       //change buttons style
-                     const AllBtns=  document.querySelectorAll(".cart-btn")
-                       const AllBtnsArry=[...AllBtns]
-                       AllBtnsArry.forEach(BT=>{
-                         const btnIDs= BT.dataset.id
-                         
-                         //enable buttons 
-                        
-                        if( e.target.dataset.id===btnIDs){
-                        BT.innerText="اضافه به سبد خرید"
-                          BT.classList.remove("disabled")
-                          BT.disabled = false
-                        }
-                         
-                    //   const IsNotInCart  = cart.find((b)=>{
-                    //                   return b.id!==btnIDs })
-                    //   if(IsNotInCart){
-                    //     BT.disabled=false
-                         
-                    //   }
-                        
-                       })//end of forEach
-                 
-                       
-                      
-                   
-                  
-
-                    
-                    
-                        
-
-           }
-
-        })
-
-
-
+        // const cartitem=document.querySelector(".cart-item")
     }
     //save cartItems in cart when dom loaded
     setUpApp(){
@@ -264,6 +258,7 @@ class Ui{
        
         
     }
+    //disable buttons  
      saveButtonsStyle(cartbtn){
         const btnsOnDom=document.querySelectorAll(".cart-btn")
        const  buttonsss=[...btnsOnDom]
@@ -279,6 +274,23 @@ class Ui{
                                         btn.classList.add("disabled");
                                     }
                                                             })}
+      EnableButton(id){
+        const AllBtns=  document.querySelectorAll(".cart-btn")
+        const AllBtnsArry=[...AllBtns]
+        AllBtnsArry.forEach(BT=>{
+          const btnIDs= BT.dataset.id
+          
+          //enable buttons 
+         
+         if( id===btnIDs){
+         BT.innerText="اضافه به سبد خرید"
+           BT.classList.remove("disabled")
+           BT.disabled = false
+         }
+         
+        })  
+
+      }
        
    
 
