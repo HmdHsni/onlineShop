@@ -2,55 +2,66 @@
 
 <head>
   <title>online shop</title>
-  <link href="./style.css" rel="stylesheet" />
+  <link href="./style/style.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" >
+    <link href="./style/bootstrap.css" rel="stylesheet" />
+    <link href="./style/bootstrap.min.css" rel="stylesheet" />
+    <link href="./style/bootstrap.min.css.map" rel="stylesheet" />
+    
 </head>
 
 <body>
-  <nav class="navbar">
-    <div class="navbar-Center">
-      <span class="hambergermenu">
-        <i class="fas fa-bars"></i>
-      </span>
-      <div class="nav-items">
-        <!-- //ul and input -->
-        <ul class="menu">
-          <li> تماس با ما </li>
-
-          <li> دسته بندی محصولات
-            <ul class="inside-ul">
-              <li>لپ تاپ</li>
-              <li> لوازم جانبی کامپیوتر</li>
-              <li>موبایل </li>
-            </ul>
-          </li>
-          <li> خانه</li>
-
-        </ul>
-
-        <input class="search" placeholder="جستجو" />
-
-      </div>
-
-      <span class="cart-icon">
+  <div class=" container">
+    <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd;">
+      <span class="cart-icon" data-toggle="modal" data-target="#staticBackdrop">
         <i class="fa fa-cart-plus"></i>
         <span class="number">0</span>
       </span>
-    </div>
-  </nav>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">صفحه اصلی <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">درباره ما</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+              دسته بندی
+            </a>
+            <div class="dropdown-menu myDropDown" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item myDropDown" href="#">لپ تاپ</a>
+              <a class="dropdown-item myDropDown" href="#"> موبایل</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item myDropDown" href="#">همه</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="جستجو" >
+          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">جستجو</button>
+        </form>
+      </div>
+    </nav>
+  </div>  
+    
   <section>
 
     <div class="content">
-
-      <h2 class="section-title">لیست محصولات</h2>
-
       <div class="single-product ">
-
-
       </div>
-
     </div>
     <footer class="footer">
       <p>
@@ -61,46 +72,28 @@
   </section>
   <!-- show modal -->
 
-  <div class="modal">
+  <div class="mymodal">
     <div class="modal-title">
-      <h3>سبد خرید شما</h3>
+      <p>سبد خرید شما</p>
     </div>
     <!-- content -->
-    <div class="modal-content"> </div>
+     <div class="modal-content"> </div>
 
 
     <!-- footer -->
     <div class="modalFooter">
-      <span class="totla-price">مجموع قیمت :</span>
-      <button class="Basketbtn">خالی کردن سبد خرید</button>
-      <button class="Basketbtn">ادامه خرید</button>
+      <button class="  btn btn-outline-primary totla-price">مجموع قیمت :</button>
+      <button class=" btn btn-outline-primary  Basketbtn">خالی کردن سبد </button>
+      <button class="  btn btn-outline-primary Basketbtn">ادامه خرید</button>
     </div>
   </div>
-  <div class="modalmenu">
-    <div class="parentOfmenu">
-      <!-- //ul and input -->
-      <ul class="secondmenu">
-        <li> تماس با ما </li>
+  <div class="backdrop"></div> 
+  <!-- Button trigger modal
 
-        <li> دسته بندی محصولات
-          <ul class="category">
-            <li>لپ تاپ</li>
-            <li> لوازم جانبی کامپیوتر</li>
-            <li>موبایل </li>
-          </ul>
-        </li>
-        <li> خانه</li>
 
-      </ul>
+<!-- Modal -->
 
-      <input class="ModalSearchBox" placeholder="جستجو" />
-
-    </div>
-
-  </div>
-
-  <div class="backdrop"></div>
-  <script type="module" src="./index.js"></script>
+  <script type="module" src="./index.js"></script> -->
 </body>
 
 </html>

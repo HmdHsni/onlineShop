@@ -1,5 +1,5 @@
 const cartIcon = document.querySelector(".cart-icon")
-const modal = document.querySelector(".modal")
+const mymodal = document.querySelector(".mymodal")
 const backdrop = document.querySelector(".backdrop");
 const number = document.querySelector(".number")
 const modalFooter = document.querySelector(".modalFooter")
@@ -10,10 +10,6 @@ const Basketbtn = document.querySelector(".Basketbtn")
 const singleproduct = document.querySelector(".single-product")
 const modalContent = document.querySelector(".modal-content")
 const numberOfProd = document.querySelector(".NumberOfProd")
-const hambergerMenu = document.querySelector(".hambergermenu")
-const modalMenu = document.querySelector(".modalmenu");
-
-// const dataid=document.querySelectorAll(".dataid")
 import { productsData } from "./products.js";
 
 let cart = [];
@@ -62,7 +58,7 @@ class Ui {
                     <p class="p-price">${element.price}</p>
                 </div>
 
-                <button class="cart-btn" data-id=${element.id}>اضافه به سبد خرید</button> 
+                <button type="button" class="btn btn-primary btn-lg btn-block cart-btn" data-id=${element.id}>اضافه به سبد خرید</button> 
             
             </div>
             `
@@ -70,11 +66,7 @@ class Ui {
             singleproduct.innerHTML = resaul
 
         });
-        ///listener for hambergermenu
-        hambergerMenu.addEventListener("click", () => {
-            modalMenu.style.display = "block"
-            backdrop.style.display = "block"
-        })
+    //   backdrop.style.display = "block"
 
     }
     getCartBtn() {
@@ -112,7 +104,7 @@ class Ui {
 
 
         });
-         //end of foreach
+        //end of foreach
 
         modalContent.addEventListener("click", (e) => {
             if (e.target.classList.contains("fa-arrow-up")) {
@@ -200,8 +192,8 @@ class Ui {
         div.innerHTML = `
                        <img  class="cart-item-img" src="${cartItem.imageUrl}" alt="picture"/>
                         <div class="cart-itemDes">
-                        <h4 class="title">${cartItem.title}</h4>
-                        <h5 class="price">${cartItem.price}</h5>
+                        <p class="title">${cartItem.title}</p>
+                        <p class="price">${cartItem.price}</p>
                         
                         </div>
                         <div class="cart-itemController">
@@ -219,7 +211,7 @@ class Ui {
         cartIcon.addEventListener("click", () => {
 
             backdrop.style.display = "block"
-            modal.style.display = "block";
+            mymodal.style.display = "block";
         });
         //close modal and backdrop
 
@@ -266,7 +258,7 @@ class Ui {
 
 
     }
-    
+
     //disable buttons  
     saveButtonsStyle(cartBtn) {
         const btnsOnDom = document.querySelectorAll(".cart-btn")
@@ -305,8 +297,7 @@ class Ui {
     closeModal(e) {
 
         backdrop.style.display = "none"
-        modal.style.display = "none";
-        modalMenu.style.display = "none"
+        mymodal.style.display = "none";
 
     }
 
