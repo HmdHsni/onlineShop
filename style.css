@@ -1,244 +1,377 @@
-
-
-:root{
-    --primaryColor:#6d28d9;
-    --secondaryColor:#ede9fe;
-    --mainWhite:#fff;
-    --mainBlack:#222;
-    --mainGrey:#7c7c7c;
-    --mainSpacing:#0.1rem;
-    --mainTransition:all 0.3s linear;
-    --mainRed:#db2777;
-    --bodyColor:#f6f6f6;
+:root {
+    --primaryColor: #6d28d9;
+    --secondaryColor: #ede9fe;
+    --mainWhite: #fff;
+    --mainBlack: #222;
+    --mainGrey: #7c7c7c;
+    --mainSpacing: #0.1rem;
+    --mainTransition: all 0.3s linear;
+    --mainRed: #db2777;
+    --bodyColor: #f6f6f6;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     list-style: none;
-    }
-    body{
-        background-color: var(--bodyColor);
-       /* position: relative; */
-       color: var(--mainBlack);
-      
-       
-       
-    }
-    @media only screen and (max-width: 600px) {
-  .nav-items{
-    display: none;
 }
 
-
+body {
+    direction: rtl;
+    background-color: var(--bodyColor);
+    /* position: relative; */
+    color: var(--mainBlack);
 }
-@media only screen and (min-width: 600px) {
 
-    .nav-items{
+@media only screen and (max-width: 600px) {
+
+    .nav-items {
         display: none;
     }
-   
+
+    .hambergermenu {
+        color: var(--primaryColor);
+        position: relative;
+        opacity: 1;
+        pointer-events: auto;
+
+    }
+
+}
+
+@media only screen and (min-width: 600px) {
+
+    .nav-items {
+        display: none;
+    }
+
+    .hambergermenu {
+        color: var(--primaryColor);
+        position: relative;
+        opacity: 1;
+        pointer-events: auto;
+
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+
+    .nav-items {
+        display: flex;
+        justify-content: space-around;
+        width: 80%;
+    }
+
+    .hambergermenu {
+        color: var(--mainGrey);
+        position: relative;
+
+        pointer-events: none;
+
+    }
+
+    .menu {
+        /* width: 750px; */
+
+        color: var(--mainBlack);
+        font-weight: bold;
+        text-align: right;
+        display: flex;
 
 
     }
-    @media only screen and (min-width: 768px) {
 
-         .nav-items{
-             display: flex;
-             justify-content: space-around;
-             width: 80%;
-         }
-         .menue{
-             /* width: 750px; */
-            
-            color: var(--mainBlack);
-            font-weight: bold;
-            text-align: right;
-            display: flex;
-          
-  
-         }
-         
-        .menue li{
-            justify-content: space-between;
+    .menu li {
+        justify-content: space-between;
         /* float: left; */
         width: 230px;
         padding: .5rem;
-      
+
         cursor: pointer;
         transition: all .5s;
         position: relative;
         text-align: center;
 
-            
-         }
-         .menue li:hover{
-           color: var(--primaryColor);
-             
-         }
-         .inside-ul{
-             display: none;
-             position: absolute;
-             right: 0px;
-             margin: 5px;
-           
-         }
-         .menue li:hover >ul {
-             display: block;
-            /* border-bottom: solid 5px black */
-            
-         }
-         .search{
-             border: none;
-             border-radius:  5px;
-             text-align: right;
-             padding-right: 1rem;
-             font-weight: bold;
-             color: var(--primaryColor);
-             background-color: var(--mainWhite);
-         }
-        
-        
-     
-         }
-         /* end of mediaquery */
 
-    .hambergerMenue{
+    }
+
+    .menu li:hover {
         color: var(--primaryColor);
 
     }
-    .cart-icon{
-        color: var(--primaryColor);
-        position: relative;
-    }
-    .navbar-Center{
-        display: flex;
-        justify-content: space-around;
-        max-width: 1170px;
-    }
-    .navbar{
-        padding-top: 1rem;
-        width: 100%;
-        height: 60px;
-       align-items: center;
-        background-color: var(--secondaryColor);
 
-    }
-    .cart-icon i ,.hambergerMenue i{
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-    .number{
-        background-color: var(--mainRed);
-        border-radius: 100%;
-        width: 20px;
-        height: 20px;
-        color: var(--mainWhite);
+    .inside-ul {
+        display: none;
         position: absolute;
-        display: flex;
-        justify-content: center;
-        right: -8px;
-        top: -8px;
-        align-items: center;
+        right: 0px;
+        margin: 5px;
 
     }
-    /* end of navbar*/
-   
-    .single-product{
-      
-        /* background-color: var(--mainWhite); */
-        /* background-color: royalblue; */
-        display: grid;
-        grid-template-columns:repeat(auto-fit  ,minmax(300px,1fr))
-    
-   
+
+    .menu li:hover>ul {
+        display: block;
+        /* border-bottom: solid 5px black */
 
     }
-    /* ghab tasvir /description va price */
-    .DBproduct{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--mainWhite);
-        border-radius: 5px;
-        margin: 2rem ;}
-    .product-des{
-        background:var(--secondaryColor);
-        width: 150px;
-        height: 50px;
-        border-radius: 5px;
-        display: flex;
-        justify-content: space-around;
-        margin: 2rem;
-        padding: 1rem;
-    }
-    .cart-btn{
-        width: 100px;
-        height: 50px;
+
+    .search {
         border: none;
+        outline: none;
         border-radius: 5px;
-        cursor: pointer;
-       
-        margin: 0 0 1rem 0;
-        padding: .5rem;
-        background-color: var(--primaryColor);
+        text-align: right;
+        padding-right: 1rem;
+        font-weight: bold;
+        color: var(--primaryColor);
+        background-color: var(--mainWhite);
     }
-    .cart-btn:hover{
-        box-shadow: 5px 5px 10px  blue;
-    }
-    .image-container{width: 250px;
-    height: 150px;}
-  
-    .section-title{
-        display: flex;
-        padding: 1rem;
-        justify-content: center;
-       
-    }
-   
 
 
-footer{
+
+}
+
+/* end of mediaquery */
+
+
+.cart-icon {
+    color: var(--primaryColor);
+    position: relative;
+}
+
+.navbar-Center {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1170px;
+}
+
+.navbar {
+    padding-top: 1rem;
+    width: 100%;
+    height: 60px;
+    align-items: center;
+    background-color: var(--secondaryColor);
+
+}
+
+.cart-icon i,
+.hambergermenu i {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.number {
+    background-color: var(--mainRed);
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    color: var(--mainWhite);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    right: -8px;
+    top: -8px;
+    align-items: center;
+
+}
+
+/* end of navbar*/
+
+.single-product  {
+
+    /* background-color: var(--mainWhite); */
+    /* background-color: royalblue; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+
+}
+
+/* ghab tasvir /description va price */
+.DBproduct {
     display: flex;
     flex-direction: column;
-   align-items: center;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--mainWhite);
+    border-radius: 5px;
+    margin: 2rem;
 }
-.modal{
-    display: none; /* Hidden by default */
-    position: absolute; /* Stay in place */
-    z-index: 1000; /* Sit on top */
-    top: 2.5rem;
-    right: 1rem;
-   
-    width: 30rem; /* Full width */
- 
-    padding-top: 0px; /* Location of the box */
-  border-radius: 5px;
-  
-    
-    background-color:var(--mainWhite)
-  
+
+.product-des {
+    background: var(--secondaryColor);
+    width: 130px;
+    height: 50px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem;
+    padding: 1rem;
 
 }
-.modal-title{
+
+.cart-btn {
+    width: 80px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    margin: 0 0 1rem 0;
+
+    padding: .5rem;
+    background-color: var(--primaryColor);
+}
+
+.cart-btn:hover {
+    box-shadow: 5px 5px 10px blue;
+    transform: scale(1.1);
+}
+
+.image-container {
+    width: 250px;
+    height: 150px;
+}
+
+.section-title {
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+
+}
+
+.footer {
+
+    align-items: center;
+    background-color: var(--secondaryColor);
+    text-align: center;
+    align-items: center;
+    font-weight: bold;
+    width: 100%;
+    height: 50px;
+    padding: 2rem;
+}
+
+.modalmenu {
+    background-color: var(--primaryColor);
+    width: 20rem;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    display: none;
+    border-radius: 10px;
+    transition: all .5s;
+
+}
+
+.parentOfmenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100%;
+    justify-content: space-between;
+
+
+}
+
+.secondmenu {
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+
+}
+
+.secondmenu li {
+    justify-content: space-around;
+    /* float: left; */
+    width: 230px;
+    padding: .5rem 0 .5rem .5rem;
+    cursor: pointer;
+    /* transition: all .5s; */
+    text-align: right;
+    padding-left: 0;
+    font-weight: bold;
+    color: var(--mainWhite);
+}
+
+.category {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 206px;
+}
+
+.secondmenu li:hover>ul {
+    display: block;
+    /* border-bottom: solid 5px black */
+
+}
+
+/* .secondmenu li:hover{
+    
+   
+} */
+.ModalSearchBox {
+    border: none;
+    border-radius: 5px;
+    text-align: right;
+    padding-right: 1rem;
+    font-weight: bold;
+    color: var(--primaryColor);
+    background-color: var(--mainWhite);
+    margin: 2rem;
+    width: 50%;
+    height: 2rem;
+
+
+}
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: absolute;
+    /* Stay in place */
+    z-index: 1000;
+    /* Sit on top */
+    top: 2.5rem;
+    right: 1rem;
+
+    width: 30rem;
+    /* Full width */
+
+    padding-top: 0px;
+    /* Location of the box */
+    border-radius: 5px;
+
+
+    background-color: var(--mainWhite)
+}
+
+.modal-title {
     align-items: center;
     color: var(--primaryColor);
     padding: 1rem 100px 1rem 100px;
 
 }
-.modalFooter{
+
+.modalFooter {
     display: flex;
     justify-content: space-around;
     color: var(--primaryColor);
 }
 
-.backdrop{
+.backdrop {
     width: 100%;
     height: 100%;
-    background-color:rgba(0,0,0,.3) ;
-    
+    background-color: rgba(0, 0, 0, .3);
+
     display: none;
     z-index: 500;
     top: 0;
@@ -247,71 +380,82 @@ footer{
 }
 
 /* style for content in modal */
-.cart-item{
+.cart-item {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin: 1rem;
-    background-color:var(--secondaryColor);
+    background-color: var(--secondaryColor);
 }
-.cart-item-img{
+
+.cart-item-img {
     width: 100px;
     height: auto;
     border-radius: 5px;
 }
-.cart-itemDes{
+
+.cart-itemDes {
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
-  
+
 }
-.title{
+
+.title {
     padding: .5rem;
 }
-.price{
-   padding: .5rem ;
+
+.price {
+    padding: .5rem;
 }
-.cart-itemController{
+
+.cart-itemController {
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
-    
+
 }
-.fa-trash-can{
+
+.fa-trash-can {
     color: red;
     margin-top: 3rem;
     cursor: pointer;
 }
-.fa-arrow-down{
+
+.fa-arrow-down {
     color: var(--mainRed);
     cursor: pointer;
 }
-.fa-arrow-up{
+
+.fa-arrow-up {
     color: var(--primaryColor);
     cursor: pointer;
 }
-.NumberOfProd{
+
+.NumberOfProd {
     font-weight: bold;
     color: var(--mainBlack);
 }
-.divFooter{
+
+.divFooter {
     display: flex;
     justify-content: space-around;
     margin-top: 1rem;
 }
-.modalbtn{
+
+.modalbtn {
     border: none;
     width: 3rem;
     height: 2rem;
-    font-size:bold;
+    font-size: bold;
     border-radius: 5px;
     cursor: pointer;
-    
+
 }
 
-.Basketbtn{
+.Basketbtn {
     width: 70px;
-    background-color:rgb(168, 168, 241);
+    background-color: rgb(168, 168, 241);
     border: none;
     border-radius: 5px;
     font-weight: bold;
@@ -320,18 +464,20 @@ footer{
     cursor: pointer;
 
 }
-.Basketbtn:hover{
+
+.Basketbtn:hover {
     background-color: var(--primaryColor);
-   
+
 }
-.disabled{
+
+.disabled {
     color: var(--mainBlack);
     background-color: var(--mainGrey);
-    
-    
+
+
 }
-.disabled:hover{
+
+.disabled:hover {
     box-shadow: none;
     cursor: unset;
 }
-
