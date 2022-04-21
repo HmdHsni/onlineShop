@@ -3,7 +3,6 @@ const showResault = document.querySelector(".showResault")
 const mybackdrop = document.querySelector(".mybackdrop");
 const number = document.querySelector(".number")
 const showResaultFooter = document.querySelector(".showResaultFooter")
-//const closebtn=document.querySelector(".closebtn")
 const cartTotal = document.querySelector(".totla-price")
 const cartBtn = document.querySelectorAll(".cart-btn")
 const Basketbtn = document.querySelector(".Basketbtn")
@@ -75,13 +74,17 @@ class Ui {
         });
         //when user search or click categories
         const localProducts = JSON.parse(localStorage.getItem("products"))
+        
         searchInput.addEventListener("input", (e) => {
             filters.searchItems = e.target.value
             this.renderProducts(localProducts, filters);
+           
+           
+            
+            
         })
         catalog.addEventListener("click",(e)=>{
             filters.searchItems=e.target.dataset.filter
-             console.log( filters.searchItems);
              const filterdProducts=localProducts.filter(p=>{
                 return p.title.toLowerCase().includes(filters.searchItems.toLowerCase())
            })
@@ -107,6 +110,8 @@ class Ui {
             </div>
                 `
                 modalbody.appendChild(productDiv)
+                this.saveButtonsStyle(cartBtn)
+                this.setCartValue(cart)
             })
 
         })
@@ -115,10 +120,7 @@ class Ui {
     renderProducts(_localProducts, _filters) {
         const filterdProducts = _localProducts.filter(p => {
             return p.title.toLowerCase().includes(filters.searchItems.toLowerCase())
-        })
-        console.log("filterproducs");
-        console.log(filterdProducts)
-
+                                    })
         searchBtn.addEventListener("click", () => {
             modalbody.innerHTML = ""
             filterdProducts.forEach((Sitem, index) => {
@@ -142,9 +144,10 @@ class Ui {
             </div>
                 `
                 modalbody.appendChild(productDiv)
+               this.saveButtonsStyle(cartBtn)
             })
 
-        })
+                                     })
     }
 
 
@@ -152,13 +155,15 @@ class Ui {
     getCartBtn() {
         const cartBtns = document.querySelectorAll(".cart-btn")
         buttons = [...cartBtns]
+        console.log("buttons");
+        console.log(buttons);
         buttons.forEach(btn => {
             const productId = btn.dataset.id
             //check id in cart 
             const IsInCart = cart.find(p => p.id === productId);
 
             if (IsInCart) {
-                btn.innerText = "in cart"
+                btn.innerText = "موجود در سبد "
                 btn.disabled = true
             }
 
@@ -176,7 +181,6 @@ class Ui {
                 //show product in cart
 
                 const CartElem = cart[cart.length - 1]
-                console.log(CartElem);
                 this.addCartitem(CartElem)
 
             })
@@ -340,7 +344,6 @@ class Ui {
     saveButtonsStyle(cartBtn) {
         const btnsOnDom = document.querySelectorAll(".cart-btn")
         const buttonsss = [...btnsOnDom]
-        console.log(buttonsss);
         buttonsss.forEach(btn => {
             const productId = btn.dataset.id
             //check id in cart 

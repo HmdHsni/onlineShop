@@ -56,18 +56,66 @@ body {
 
 @media only screen and (max-width: 600px) {
 
+    .showResault {
+        display: none;
+        /* Hidden by default */
+        position: absolute;
+        /* Stay in place */
+        z-index: 1000;
+        /* Sit on top */
+        top: 2.5rem;
+        right: 1rem;
+        width: 100%;
+        /* Full width */
+        padding-top: 0px;
+        /* Location of the box */
+        border-radius: 10px;
+        background-color: var(--mainWhite);
+    }
     
 
 }
 
 @media only screen and (min-width: 600px) {
 
-
+    .showResault {
+        display: none;
+        /* Hidden by default */
+        position: absolute;
+        /* Stay in place */
+        z-index: 1000;
+        /* Sit on top */
+        top: 2.5rem;
+        right: 1rem;
+        width: 70%;
+        /* Full width */
+        padding-top: 0px;
+        /* Location of the box */
+        border-radius: 10px;
+        background-color: var(--mainWhite);
+    }
+    
 }
 
 @media only screen and (min-width: 768px) {
 
-
+    .showResault {
+        display: none;
+        /* Hidden by default */
+        position: absolute;
+        /* Stay in place */
+        z-index: 1000;
+        /* Sit on top */
+        top: 2.5rem;
+        right: 1rem;
+        width: 50%;
+        /* Full width */
+        padding-top: 0px;
+        /* Location of the box */
+        border-radius: 10px;
+        background-color: var(--mainWhite);
+    }
+    
 }
 
 /* end of mediaquery */
@@ -103,9 +151,6 @@ body {
 /* end of navbar*/
 
 .single-product  {
-
-    /* background-color: var(--mainWhite); */
-    /* background-color: royalblue; */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
 
@@ -136,14 +181,8 @@ body {
 
 .cart-btn {
     
-    /* border: none;
-    border-radius: 5px; */
     cursor: pointer;
 
-    /* margin: 0 0 1rem 0;
-
-    padding: .2rem; */
-    /* background-color: var(--primaryColor); */
     font-family: Vazir;
     font-style: normal;
     font-weight: normal;
@@ -173,22 +212,6 @@ body {
     padding: 2rem;
 }
 
-.showResault {
-    display: none;
-    /* Hidden by default */
-    position: absolute;
-    /* Stay in place */
-    z-index: 1000;
-    /* Sit on top */
-    top: 2.5rem;
-    right: 1rem;
-    width: 40%;
-    /* Full width */
-    padding-top: 0px;
-    /* Location of the box */
-    border-radius: 10px;
-    background-color: var(--mainWhite);
-}
 
 .showResault-title {
     align-items: center;
