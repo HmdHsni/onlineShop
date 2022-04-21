@@ -1,19 +1,26 @@
 const cartIcon = document.querySelector(".cart-icon")
-const mymodal = document.querySelector(".mymodal")
-const backdrop = document.querySelector(".backdrop");
+const showResault = document.querySelector(".showResault")
+const mybackdrop = document.querySelector(".mybackdrop");
 const number = document.querySelector(".number")
-const modalFooter = document.querySelector(".modalFooter")
+const showResaultFooter = document.querySelector(".showResaultFooter")
 //const closebtn=document.querySelector(".closebtn")
 const cartTotal = document.querySelector(".totla-price")
 const cartBtn = document.querySelectorAll(".cart-btn")
 const Basketbtn = document.querySelector(".Basketbtn")
 const singleproduct = document.querySelector(".single-product")
-const modalContent = document.querySelector(".modal-content")
+const showResaultContent = document.querySelector(".showResaultContent")
 const numberOfProd = document.querySelector(".NumberOfProd")
+const searchInput = document.querySelector(".form-control")
+const searchBtn = document.querySelector(".searchBtn")
+const modalbody = document.querySelector(".modal-body")
+const catalog = document.querySelector(".catalog")
 import { productsData } from "./products.js";
 
 let cart = [];
 let buttons = [];
+let filters = {
+    searchItems: "",
+}
 
 
 document.addEventListener('DOMContentLoaded', (e) => {
@@ -24,11 +31,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
     ui.showOnDom(productsData);//show all produts on dom 
     ui.getCartBtn();//create cart and disabled btns
     ui.setUpApp();//save number and total with reload dom
-
     //save in local storage
     Storage.saveProducts(productsData)
     //saved button style 
     ui.saveButtonsStyle(cartBtn)
+    //check for search
 })
 
 //get data from api 
@@ -58,7 +65,7 @@ class Ui {
                     <p class="p-price">${element.price}</p>
                 </div>
 
-                <button type="button" class="btn btn-primary btn-lg btn-block cart-btn" data-id=${element.id}>اضافه به سبد خرید</button> 
+                <button type="button" class="btn btn-primary btn-small cart-btn" data-id=${element.id}>اضافه به سبد خرید</button> 
             
             </div>
             `
@@ -66,9 +73,82 @@ class Ui {
             singleproduct.innerHTML = resaul
 
         });
-    //   backdrop.style.display = "block"
+        //when user search or click categories
+        const localProducts = JSON.parse(localStorage.getItem("products"))
+        searchInput.addEventListener("input", (e) => {
+            filters.searchItems = e.target.value
+            this.renderProducts(localProducts, filters);
+        })
+        catalog.addEventListener("click",(e)=>{
+            filters.searchItems=e.target.dataset.filter
+             console.log( filters.searchItems);
+             const filterdProducts=localProducts.filter(p=>{
+                return p.title.toLowerCase().includes(filters.searchItems.toLowerCase())
+           })
+            modalbody.innerHTML=""
+            filterdProducts.forEach((element,index)=>{
+                const productDiv=document.createElement("div")
+                productDiv.classList.add("searchProduct")
+                productDiv.innerHTML=`
 
+                <div class="DBproduct">
+
+                <div class="image-container">
+                    <img src="${element.imageUrl} " alt="picture"/>
+                </div>
+
+                 <div class="product-des">
+                     <p class="p-title"> ${element.title}</p>
+                    <p class="p-price">${element.price}</p>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-small cart-btn" data-id=${element.id}>اضافه به سبد خرید</button> 
+
+            </div>
+                `
+                modalbody.appendChild(productDiv)
+            })
+
+        })
     }
+    //show searched product in modal on dom when search button clicked
+    renderProducts(_localProducts, _filters) {
+        const filterdProducts = _localProducts.filter(p => {
+            return p.title.toLowerCase().includes(filters.searchItems.toLowerCase())
+        })
+        console.log("filterproducs");
+        console.log(filterdProducts)
+
+        searchBtn.addEventListener("click", () => {
+            modalbody.innerHTML = ""
+            filterdProducts.forEach((Sitem, index) => {
+                const productDiv = document.createElement("div")
+                productDiv.classList.add("searchProduct")
+                productDiv.innerHTML = `
+                
+                <div class="DBproduct">
+            
+                <div class="image-container">
+                    <img src="${Sitem.imageUrl} " alt="picture"/>
+                </div>
+
+                 <div class="product-des">
+                     <p class="p-title"> ${Sitem.title}</p>
+                    <p class="p-price">${Sitem.price}</p>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-small cart-btn" data-id=${Sitem.id}>اضافه به سبد خرید</button> 
+            
+            </div>
+                `
+                modalbody.appendChild(productDiv)
+            })
+
+        })
+    }
+
+
+
     getCartBtn() {
         const cartBtns = document.querySelectorAll(".cart-btn")
         buttons = [...cartBtns]
@@ -105,14 +185,12 @@ class Ui {
 
         });
         //end of foreach
-
-        modalContent.addEventListener("click", (e) => {
+        //increment ,decrement and delet item in cart 
+        showResaultContent.addEventListener("click", (e) => {
             if (e.target.classList.contains("fa-arrow-up")) {
                 const addQuantity = e.target
 
                 //find the product in cart
-                console.log("cart");
-                console.log(cart);
                 const addedItem = cart.find((citem) => { return citem.id == addQuantity.dataset.id })
                 console.log("addedItem");
                 console.log(addedItem);
@@ -185,7 +263,7 @@ class Ui {
         cartTotal.innerText = `مجموع قیمت:${Totalprice}`
 
     }
-    //show cart in Dom 
+    //show cart on Dom 
     addCartitem(cartItem) {
         const div = document.createElement("div")
         div.classList.add("cart-item")
@@ -203,19 +281,18 @@ class Ui {
                         </div>
                         <i class="fa-solid fa-trash-can" data-id=${cartItem.id}></i>
         `
-        modalContent.appendChild(div)
+        showResaultContent.appendChild(div)
         //listener for Basketbtn
         Basketbtn.addEventListener("click", this.ClearBasket)
         //
         //show modal 
         cartIcon.addEventListener("click", () => {
-
-            backdrop.style.display = "block"
-            mymodal.style.display = "block";
+            showResault.style.display = "block";
+            mybackdrop.style.display = "block"
         });
         //close modal and backdrop
 
-        backdrop.addEventListener("click", this.closeModal)
+        mybackdrop.addEventListener("click", this.closeModal)
 
     }
     //save cartItems in cart when dom loaded
@@ -230,7 +307,7 @@ class Ui {
     //clear all item from cart 
     ClearBasket() {
         //remove from dom 
-        const ContentChild = [...modalContent.children]//this is object to array
+        const ContentChild = [...showResaultContent.children]//this is object to array
         ContentChild.forEach(item => {
             item.remove();
 
@@ -296,8 +373,8 @@ class Ui {
 
     closeModal(e) {
 
-        backdrop.style.display = "none"
-        mymodal.style.display = "none";
+        mybackdrop.style.display = "none"
+        showResault.style.display = "none";
 
     }
 
@@ -309,10 +386,7 @@ class Storage {
         localStorage.setItem("products", JSON.stringify(products))
     }
     static getProduct(productId) {
-        console.log("id in getProduct method:");
-        console.log(productId);//id is ok 
         const localProducts = JSON.parse(localStorage.getItem("products"))
-        // const selectedID=e.target.dataset.id
         const found = localProducts.find(p => {
             console.log("p.id");
             console.log(p.id);

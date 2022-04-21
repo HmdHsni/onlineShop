@@ -2,26 +2,26 @@ export const productsData = [
 
     {
         id: 1,
-        title: "محصول اول",
+        title: "لپ تاپ",
         price: 200,
         imageUrl: "./public/assets/4.jpg"
     },
     {
         id: 2,
-        title: "محصول دوم",
+        title: "لپ تاپ",
         price: 900,
         imageUrl: "./public/assets/4.jpg"
     },
     {
         id: 3,
-        title: "محصول سوم",
+        title: "لپ تاپ",
         price: 100,
         imageUrl: "./public/assets/3.jpg"
     }
     ,
     {
         id: 4,
-        title: "محصول چهارم",
+        title: "لپ تاپ",
         price: 800,
         imageUrl: "./public/assets/4.jpg"
     }
@@ -42,14 +42,14 @@ export const productsData = [
     ,
     {
         id: 7,
-        title: "محصول هفتم",
+        title: "موبایل",
         price: 600,
         imageUrl: "./public/assets/m1.jpg"
     }
     ,
     {
         id: 8,
-        title: "محصول هشتم",
+        title: "موبایل",
         price: 300,
         imageUrl: "./public/assets/m2.jpg"
     }

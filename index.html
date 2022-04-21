@@ -19,9 +19,9 @@
 </head>
 
 <body>
-  <div class=" container">
-    <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd;">
-      <span class="cart-icon" data-toggle="modal" data-target="#staticBackdrop">
+  <div class=" Navtop">
+    <nav class="navbar navbar-expand-lg navbar navbar-light myNavbar" >
+      <span class="cart-icon">
         <i class="fa fa-cart-plus"></i>
         <span class="number">0</span>
       </span>
@@ -41,20 +41,44 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
               دسته بندی
             </a>
-            <div class="dropdown-menu myDropDown" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item myDropDown" href="#">لپ تاپ</a>
-              <a class="dropdown-item myDropDown" href="#"> موبایل</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item myDropDown" href="#">همه</a>
+            <div class="dropdown-menu myDropDown catalog" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item myDropDown catalog" data-toggle="modal" data-target="#staticBackdrop" href="#" data-filter="لپ تاپ">
+                 لپ تاپ</a>
+              <a class="dropdown-item myDropDown catalog"  data-toggle="modal" data-target="#staticBackdrop" href="#" data-filter="موبایل"> 
+                 موبایل</a>
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <div class="d-flex my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="جستجو" >
-          <button class="btn btn-outline-info my-2 my-sm-0" type="submit">جستجو</button>
-        </form>
+          <button class="btn btn-outline-info my-2 my-sm-0 searchBtn" data-toggle="modal" data-target="#staticBackdrop" type="submit">جستجو</button>
+
+<!-- Modal -->
+<div class="modal fade modal-xl" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+   
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <p class="titleClass">نتیجه جستجو</p>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+         
+        </div>
       </div>
     </nav>
+
   </div>  
     
   <section>
@@ -72,28 +96,25 @@
   </section>
   <!-- show modal -->
 
-  <div class="mymodal">
-    <div class="modal-title">
+  <div class="showResault">
+    <div class="showResault-title">
       <p>سبد خرید شما</p>
     </div>
     <!-- content -->
-     <div class="modal-content"> </div>
+     <div class="showResaultContent"> </div>
 
 
     <!-- footer -->
-    <div class="modalFooter">
+    <div class="showResaultFooter">
       <button class="  btn btn-outline-primary totla-price">مجموع قیمت :</button>
       <button class=" btn btn-outline-primary  Basketbtn">خالی کردن سبد </button>
       <button class="  btn btn-outline-primary Basketbtn">ادامه خرید</button>
     </div>
   </div>
-  <div class="backdrop"></div> 
-  <!-- Button trigger modal
+  <div class="mybackdrop"></div> 
 
 
-<!-- Modal -->
-
-  <script type="module" src="./index.js"></script> -->
+  <script type="module" src="./index.js"></script>
 </body>
 
 </html>
